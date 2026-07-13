@@ -6,21 +6,22 @@
 <title>Juan Carlos Ramírez — RIVELSA</title>
 <meta name="description" content="Juan Carlos Ramírez, Gerente Comercial de RIVELSA SAC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#12203D;
-    --brand:#1D3E8C;
-    --steel:#7C8896;
-    --steel-light:#D8DDE2;
-    --concrete:#F4F2ED;
-    --amber:#E8A33D;
-    --white:#FFFFFF;
+    --bg:#EEF1F8;
+    --surface:#FFFFFF;
+    --ink:#10192E;
+    --muted:#6B7280;
+    --brand:#2B4CDB;
+    --brand-deep:#13214F;
+    --accent:#17C3B2;
+    --line:#E7E9F0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{
-    background:var(--concrete);
-    font-family:'Source Sans 3', sans-serif;
+    background:var(--bg);
+    font-family:'Inter', sans-serif;
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
   }
@@ -29,176 +30,210 @@
     display:flex;
     align-items:flex-start;
     justify-content:center;
-    padding:28px 16px 60px;
+    padding:32px 16px 60px;
   }
+
   .card{
     width:100%;
     max-width:420px;
-    background:var(--white);
-    border:1px solid var(--steel-light);
+    background:var(--surface);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -20px rgba(16,25,46,0.28), 0 2px 8px rgba(16,25,46,0.06);
+  }
+
+  /* Hero con gradiente y corte diagonal */
+  .hero{
     position:relative;
+    height:148px;
+    background:linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 65%, var(--accent) 130%);
+    clip-path:polygon(0 0, 100% 0, 100% 78%, 0 100%);
   }
-  .card::before{
-    content:"";
+  .hero .badge{
     position:absolute;
-    top:0; left:0; right:0;
-    height:6px;
-    background:linear-gradient(90deg, var(--brand) 0%, var(--brand) 70%, var(--amber) 70%, var(--amber) 100%);
-  }
-
-  /* Header: rótulo tipo plano técnico */
-  .header{
-    padding:22px 24px 16px;
-    border-bottom:1px solid var(--steel-light);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .brandmark{
-    font-family:'Barlow Condensed', sans-serif;
+    top:18px; right:20px;
+    font-family:'Sora', sans-serif;
     font-weight:700;
-    font-size:22px;
-    letter-spacing:0.06em;
-    color:var(--brand);
+    font-size:14px;
+    letter-spacing:0.02em;
+    color:#FFFFFF;
   }
-  .doc-code{
-    font-family:'IBM Plex Mono', monospace;
+  .hero .badge span{
+    display:block;
+    font-family:'Inter', sans-serif;
+    font-weight:500;
     font-size:10px;
-    letter-spacing:0.08em;
-    color:var(--steel);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.65);
     text-align:right;
-    line-height:1.5;
+    margin-top:2px;
   }
 
-  /* Foto + identidad */
-  .identity{
-    padding:28px 24px 20px;
+  .photo-wrap{
+    position:relative;
     display:flex;
-    gap:18px;
-    align-items:center;
+    justify-content:center;
+    margin-top:-64px;
   }
-  .photo-frame{
-    width:96px;
-    height:96px;
-    flex:none;
-    border:2px solid var(--ink);
-    padding:3px;
+  .photo-ring{
+    width:128px;
+    height:128px;
+    border-radius:50%;
+    background:var(--surface);
+    padding:5px;
+    box-shadow:0 10px 24px -8px rgba(16,25,46,0.35);
   }
-  .photo-frame img{
+  .photo-ring img{
     width:100%;
     height:100%;
     object-fit:cover;
+    border-radius:50%;
     display:block;
   }
-  .name-block h1{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700;
-    font-size:26px;
-    letter-spacing:0.01em;
-    line-height:1.05;
+
+  /* Identidad */
+  .identity{
+    text-align:center;
+    padding:16px 24px 8px;
+  }
+  .identity h1{
+    font-family:'Sora', sans-serif;
+    font-weight:800;
+    font-size:24px;
+    letter-spacing:-0.01em;
     color:var(--ink);
   }
-  .name-block .role{
-    margin-top:6px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
+  .role-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    padding:6px 14px;
+    background:rgba(43,76,219,0.09);
+    border-radius:999px;
+    font-family:'Inter', sans-serif;
     font-weight:600;
-    letter-spacing:0.04em;
+    font-size:12.5px;
     color:var(--brand);
-    text-transform:uppercase;
   }
-  .name-block .org{
-    margin-top:3px;
+  .identity .org{
+    margin-top:10px;
     font-size:13px;
-    color:var(--steel);
+    color:var(--muted);
+    font-weight:500;
   }
 
-  /* Ficha de datos — estilo hoja técnica de producto */
-  .specs{
-    padding:4px 24px 8px;
-  }
-  .spec-row{
-    display:grid;
-    grid-template-columns:92px 1fr;
-    gap:14px;
-    padding:13px 0;
-    border-top:1px solid var(--steel-light);
-    align-items:start;
-  }
-  .spec-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px;
-    font-weight:600;
-    letter-spacing:0.07em;
-    color:var(--steel);
-    text-transform:uppercase;
-    padding-top:2px;
-  }
-  .spec-value{
-    font-size:15px;
-    line-height:1.45;
-  }
-  .spec-value a{
-    color:var(--ink);
-    text-decoration:none;
-  }
-  .spec-value a:hover, .spec-value a:focus-visible{
-    color:var(--brand);
-    text-decoration:underline;
-  }
-
-  /* Acciones */
-  .actions{
-    padding:20px 24px 26px;
+  /* Contactos como chips */
+  .contacts{
+    padding:20px 20px 4px;
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
   }
-  .btn{
+  .chip{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    background:#F7F8FC;
+    border:1px solid var(--line);
+    border-radius:16px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .chip:hover, .chip:focus-visible{
+    background:#EFF2FF;
+    border-color:rgba(43,76,219,0.35);
+  }
+  .chip .icon{
+    flex:none;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:var(--surface);
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:9px;
-    height:50px;
-    font-family:'Source Sans 3', sans-serif;
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:0.01em;
-    text-decoration:none;
-    border:2px solid transparent;
-    transition:transform .12s ease, background .12s ease, color .12s ease;
+    box-shadow:0 1px 3px rgba(16,25,46,0.08);
   }
-  .btn:active{ transform:scale(0.98); }
+  .chip .icon svg{
+    width:17px; height:17px;
+    color:var(--brand);
+  }
+  .chip .text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.25;
+    min-width:0;
+  }
+  .chip .label{
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .chip .value{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  /* CTAs */
+  .actions{
+    padding:20px 20px 26px;
+    display:flex;
+    gap:10px;
+  }
+  .btn{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    height:52px;
+    border-radius:16px;
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:14.5px;
+    text-decoration:none;
+    border:none;
+    transition:transform .12s ease, filter .12s ease;
+  }
+  .btn:active{ transform:scale(0.97); }
   .btn-primary{
     background:var(--ink);
-    color:var(--white);
+    color:#FFFFFF;
   }
-  .btn-primary:hover, .btn-primary:focus-visible{ background:var(--brand); }
-  .btn-secondary{
-    background:var(--white);
-    color:var(--ink);
-    border-color:var(--ink);
+  .btn-primary:hover, .btn-primary:focus-visible{ filter:brightness(1.15); }
+  .btn-accent{
+    background:linear-gradient(135deg, var(--accent) 0%, #0FA89A 100%);
+    color:#04211D;
   }
-  .btn-secondary:hover, .btn-secondary:focus-visible{ background:var(--concrete); }
+  .btn-accent:hover, .btn-accent:focus-visible{ filter:brightness(1.06); }
   .btn svg{ width:18px; height:18px; flex:none; }
 
   /* Footer */
   .footer{
     padding:16px 24px 22px;
-    border-top:1px solid var(--steel-light);
-    background:var(--concrete);
+    border-top:1px solid var(--line);
+    text-align:center;
   }
   .footer .lines{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:9.5px;
-    letter-spacing:0.05em;
-    color:var(--steel);
-    line-height:1.7;
-    text-transform:uppercase;
+    font-size:10.5px;
+    font-weight:500;
+    letter-spacing:0.04em;
+    color:var(--muted);
+    line-height:1.8;
   }
 
   @media (prefers-reduced-motion: reduce){
-    .btn{ transition:none; }
+    .btn, .chip{ transition:none; }
   }
 </style>
 </head>
@@ -206,62 +241,62 @@
 
 <main class="card">
 
-  <div class="header">
-    <span class="brandmark">RIVELSA</span>
-    <span class="doc-code">FICHA&nbsp;DE&nbsp;CONTACTO<br>CANAL&nbsp;DISTRIBUCIÓN</span>
+  <div class="hero">
+    <div class="badge">RIVELSA<span>Distribución ferretera</span></div>
+  </div>
+
+  <div class="photo-wrap">
+    <div class="photo-ring">
+      <img src="foto.jpg" alt="Foto de Juan Carlos Ramírez">
+    </div>
   </div>
 
   <div class="identity">
-    <div class="photo-frame">
-      <img src="foto.jpg" alt="Foto de Juan Carlos Ramírez">
-    </div>
-    <div class="name-block">
-      <h1>Juan Carlos<br>Ramírez</h1>
-      <div class="role">Gerente Comercial</div>
-      <div class="org">RIVELSA SAC</div>
-    </div>
+    <h1>Juan Carlos Ramírez</h1>
+    <div class="role-pill">Gerente Comercial</div>
+    <div class="org">RIVELSA SAC</div>
   </div>
 
-  <div class="specs">
-    <div class="spec-row">
-      <span class="spec-label">Celular</span>
-      <span class="spec-value"><a href="tel:+51994297885">994&nbsp;297&nbsp;885</a></span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">Central</span>
-      <span class="spec-value"><a href="tel:+5112135510">213-5510</a></span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">Correo</span>
-      <span class="spec-value"><a href="mailto:jcramirez@rivelsa.com.pe">jcramirez@rivelsa.com.pe</a></span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">Oficina</span>
-      <span class="spec-value">Av. Aramburú 229, of. 401<br>San Isidro, Lima</span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">Web</span>
-      <span class="spec-value"><a href="https://www.rivelsa.com.pe" target="_blank" rel="noopener">rivelsa.com.pe</a></span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">LinkedIn</span>
-      <span class="spec-value"><a href="https://www.linkedin.com/in/juancaramirezb2b" target="_blank" rel="noopener">/in/juancaramirezb2b</a></span>
-    </div>
+  <div class="contacts">
+    <a class="chip" href="tel:+51994297885">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span class="text"><span class="label">Celular</span><span class="value">994 297 885</span></span>
+    </a>
+    <a class="chip" href="tel:+5112135510">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .97.76l1.1 4.43a1 1 0 0 1-.29.96l-1.7 1.7a16 16 0 0 0 6.79 6.79l1.7-1.7a1 1 0 0 1 .96-.29l4.43 1.1a1 1 0 0 1 .76.97V19a2 2 0 0 1-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg></span>
+      <span class="text"><span class="label">Central</span><span class="value">213-5510</span></span>
+    </a>
+    <a class="chip" href="mailto:jcramirez@rivelsa.com.pe">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
+      <span class="text"><span class="label">Correo</span><span class="value">jcramirez@rivelsa.com.pe</span></span>
+    </a>
+    <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Av.+Aramburu+229+San+Isidro+Lima" target="_blank" rel="noopener">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <span class="text"><span class="label">Oficina</span><span class="value">Av. Aramburú 229, San Isidro</span></span>
+    </a>
+    <a class="chip" href="https://www.rivelsa.com.pe" target="_blank" rel="noopener">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg></span>
+      <span class="text"><span class="label">Web</span><span class="value">rivelsa.com.pe</span></span>
+    </a>
+    <a class="chip" href="https://www.linkedin.com/in/juancaramirezb2b" target="_blank" rel="noopener">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg></span>
+      <span class="text"><span class="label">LinkedIn</span><span class="value">/in/juancaramirezb2b</span></span>
+    </a>
   </div>
 
   <div class="actions">
     <a class="btn btn-primary" href="contacto.vcf" download="Juan Carlos Ramírez - RIVELSA.vcf">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></svg>
-      Guardar contacto
+      Guardar
     </a>
-    <a class="btn btn-secondary" href="https://wa.me/51994297885" target="_blank" rel="noopener">
+    <a class="btn btn-accent" href="https://wa.me/51994297885" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.72-2.08.98-2.36c.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.18 1.53 1.92 1.05.95 1.94 1.24 2.22 1.38.28.14.44.12.6-.07.16-.19.68-.8.87-1.07.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.46.21.53.33.07.12.07.68-.17 1.36z"/></svg>
       WhatsApp
     </a>
   </div>
 
   <div class="footer">
-    <div class="lines">Baños · Pisos y revestimientos · Hotelería<br>Comercial · Cocinas · Iluminación · Gasfitería</div>
+    <div class="lines">Baños · Pisos y revestimientos · Hotelería · Comercial<br>Cocinas · Iluminación · Gasfitería</div>
   </div>
 
 </main>
