@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Ramírez;Juan Carlos;;;
+FN:Juan Carlos Ramírez
+ORG:RIVELSA SAC
+TITLE:Gerente Comercial
+TEL;TYPE=CELL,VOICE:+51 994 297 885
+TEL;TYPE=WORK,VOICE:+51 1 213 5510
+EMAIL;TYPE=WORK:jcramirez@rivelsa.com.pe
+URL:https://www.rivelsa.com.pe
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/juancaramirezb2b
+ADR;TYPE=WORK:;;Av. Aramburú 229 of. 401;San Isidro, Lima;;;Perú
+NOTE:Distribución de materiales de construcción y ferretería
+END:VCARD
